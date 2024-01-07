@@ -14,8 +14,8 @@ st.set_page_config(
 with st.sidebar:
     selected = option_menu(
         menu_title='Essentials',
-        options=['Virtual Env','Streamlit','Git commands','stripplot','lmplot'],
-        icons=['house','file-earmark-text','body-text','chevron-bar-contract','cloud-check'],
+        options=['Virtual Env','Streamlit','Git commands']#,'stripplot','lmplot'],
+        icons=['house','file-earmark-text','body-text']#,'chevron-bar-contract','cloud-check'],
         menu_icon='diagram-3',
         default_index=0
     )
