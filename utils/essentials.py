@@ -1,4 +1,6 @@
 import streamlit as st
+import os
+import base64
 
 def virtual_env_creation():
     st.header("Virtual environment creation")
@@ -38,73 +40,86 @@ def create_streamlit_app():
             """)
     st.markdown("[streamlit cheat sheet](%s)" % "https://cheat-sheet.streamlit.app/")
 
+def pandas_basics():
+    st.header('Pandas')
+    # Opening file from file path
+    file = os.path.join(os.getcwd(),os.path.join('assets', 'Pandas_Cheat_Sheet.pdf'))
+    with open(file, "rb") as f:
+        base64_pdf = base64.b64encode(f.read()).decode('utf-8')
+
+    # Embedding PDF in HTML
+    pdf_display = F'<iframe src="data:application/pdf;base64,{base64_pdf}" width="700" height="1000" type="application/pdf"></iframe>'
+
+    # Displaying File
+    st.markdown(pdf_display, unsafe_allow_html=True)
+
 def git_commands():
     st.header("Git Commands")
-    st.subheader("Username and email configuration:")
+    st.subheader("1. Username and email configuration:")
     st.code("git config --global user.name 'yourName'")
     st.code("git config --global user.email 'youremail@email.com'")
 
-    st.subheader("To verify the configuration:")
+    st.subheader("2. To verify the configuration:")
     st.code("git config user.name")
     st.code("git config user.email")
 
-    st.subheader("To intialize a new repository")
+    st.subheader("3. To intialize a new repository")
     st.code("git init")
 
-    st.subheader("To get the changes in repository")
+    st.subheader("4. To get the changes in repository")
     st.code("git status")
 
-    st.subheader("To get differences")
+    st.subheader("5. To get differences")
     st.code("git diff")
     st.text("or")
     st.code("git diff <filename>")
 
-    st.subheader("To add the file changes to working tree")
+    st.subheader("6. To add the file changes to working tree")
     st.code("git add .")
     st.text("or")
     st.code("git add <filename>")
 
-    st.subheader("To commit the changes to working tree")
+    st.subheader("7. To commit the changes to working tree")
     st.code("git commit -m 'meaningful message'")
 
-    st.subheader("To check the list of commits")
+    st.subheader("8. To check the list of commits")
     st.code("git log")
     st.text("or")
     st.code("git log --oneline")
 
-    st.subheader("To reset to a particular commit")
+    st.subheader("9. To reset to a particular commit")
     st.code("git reset --hard <commit id>")
 
-    st.subheader("To delete last commit")
+    st.subheader("10. To delete last commit")
     st.code("git reset --hard HEAD^0")
 
-    st.subheader("Creation of a branch in local")
+    st.subheader("11. Creation of a branch in local")
     st.code("git branch <branch name>")
 
-    st.subheader("List of local branches")
+    st.subheader("12. List of local branches")
     st.code("git branch")
 
-    st.subheader("Checkout a branch")
+    st.subheader("13. Checkout a branch")
     st.code("git checkout <branchname>")
 
-    st.subheader("Merging master branch(old) to dev branch(new)")
+    st.subheader("14. Merging master branch(old) to dev branch(new)")
     st.code("git checkout master")
     st.code("git merge dev")
 
-    st.subheader("To delete a branch")
+    st.subheader("15. To delete a branch")
     st.code("git branch -d <branch name>")
 
-    st.subheader("Configuring remote repository to local branch")
+    st.subheader("16. Configuring remote repository to local branch")
     st.code("git remote add origin <url for remote repo>")
     st.code("git remote -v")
 
-    st.subheader("Pushing changes to remote repository")
+    st.subheader("17. Pushing changes to remote repository")
     st.code("git push origin master")
 
-    st.subheader("Cloning a remote repository")
+    st.subheader("18. Cloning a remote repository")
     st.code("git clone <remote repo url>")
 
-    st.subheader("Pulling changes from remote repository")
+    st.subheader("19. Pulling changes from remote repository")
     st.code("git pull origin master")
 
     
