@@ -40,19 +40,6 @@ def create_streamlit_app():
             """)
     st.markdown("[streamlit cheat sheet](%s)" % "https://cheat-sheet.streamlit.app/")
 
-def pandas_basics():
-    st.header('Pandas')
-    # Opening file from file path
-    file = os.path.join(os.getcwd(),os.path.join('assets', 'Pandas_Cheat_Sheet.pdf'))
-    with open(file, "rb") as f:
-        base64_pdf = base64.b64encode(f.read()).decode('utf-8')
-
-    # Embedding PDF in HTML
-    pdf_display = F'<iframe src="data:application/pdf;base64,{base64_pdf}" width="700" height="1000" type="application/pdf"></iframe>'
-
-    # Displaying File
-    st.markdown(pdf_display, unsafe_allow_html=True)
-
 def git_commands():
     st.header("Git Commands")
     st.subheader("1. Username and email configuration:")
@@ -121,5 +108,87 @@ def git_commands():
 
     st.subheader("19. Pulling changes from remote repository")
     st.code("git pull origin master")
+
+def pandas_basics():
+    st.header('Pandas')
+    # Opening file from file path
+    file = os.path.join(os.getcwd(),os.path.join('assets', 'Pandas_Cheat_Sheet.pdf'))
+    with open(file, "rb") as f:
+        base64_pdf = base64.b64encode(f.read()).decode('utf-8')
+
+    # Embedding PDF in HTML
+    pdf_display = F'<iframe src="data:application/pdf;base64,{base64_pdf}" width="700" height="1000" type="application/pdf"></iframe>'
+
+    # Displaying File
+    st.markdown(pdf_display, unsafe_allow_html=True)
+
+def show_os_module():
+    st.code("""
+            os.getcwd()  # current working directory
+            os.listdir(path)  # lists all the files and directories in the 'path'
+            os.remove(path)  # removes a file
+            os.rmdir(directory_path)  # removes a directory if it is empty. To delete non-empty folder, use shutil module
+            os.rename('old_name.txt','New_name.txt')  # renames the file name
+            os.mkdir(directory_path, mode)  # mode = 0o666 --> create a directory
+            os.makedirs(directory_path, mode)  # creates all directories missing in the mentioned directory_path
+            # os.path
+            os.path.exists("file_name")  # giving the name of the file as a parameter
+            os.path.getsize("filename")  # give us the size of the file in bytes
+            os.path.join(path1, file_name)  # joins paths according to operating system
+            os.path.basename("/baz/foo")  # output: foo
+            os.path.dirname("/baz/foo")  # output: /baz
+            os.path.isabs("/baz/foo")  # output: True
+            os.path.isdir("C:\\Users")  # output: True
+            os.path.isfile("C:\\Users\foo.csv")  # output: True
+            os.path.normcase("/BAz")  # output: '\\\\baz' --> normcase in windows
+            """)
+
+def show_glob_module():
+    st.markdown("[Open 'glob' module article](%s)" % "https://www.geeksforgeeks.org/how-to-use-glob-function-to-find-files-recursively-in-python/")
+
+def show_subprocess_module():
+    st.markdown("[Open 'subprocess' module article](%s)" % "https://www.geeksforgeeks.org/python-subprocess-module/")
+
+def show_logging_module():
+    st.markdown("[Open 'logging' module article](%s)" % "https://www.geeksforgeeks.org/logging-in-python/")
+
+def show_datetime_module():
+    st.markdown("[Open 'datetime' module article](%s)" % "https://www.geeksforgeeks.org/python-datetime-module/")
+
+def show_pathlib_module():
+    st.markdown("[Open 'pathlib' module article](%s)" % "https://www.geeksforgeeks.org/pathlib-module-in-python/")
+
+def show_shutil_module():
+    st.markdown("[Open 'shutil' module article](%s)" % "https://www.geeksforgeeks.org/shutil-module-in-python/")
+
+
+def general_modules():
+    st.header("General modules")
+    selected_lib = st.selectbox("Select a module",
+                                [
+                                    'os', 
+                                    'glob', 
+                                    'subprocess', 
+                                    'logging',
+                                    'datatime',
+                                    'pathlib',
+                                    'shutil',
+
+                                ]
+                            )
+    if selected_lib == 'os':
+        show_os_module()
+    elif selected_lib == 'glob':
+        show_glob_module()
+    elif selected_lib == 'subprocess':
+        show_subprocess_module()
+    elif selected_lib == 'logging':
+        show_logging_module()
+    elif selected_lib == 'datatime':
+        show_datetime_module()
+    elif selected_lib == 'pathlib':
+        show_pathlib_module()
+    elif selected_lib == 'shutil':
+        show_shutil_module()
 
     
