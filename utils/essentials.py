@@ -36,6 +36,7 @@ def create_streamlit_app():
             elif selected == 'Streamlit':
                 create_streamlit_app()
             """)
+    st.markdown("[streamlit cheat sheet](%s)" % "https://cheat-sheet.streamlit.app/")
 
 def git_commands():
     st.header("Git Commands")
