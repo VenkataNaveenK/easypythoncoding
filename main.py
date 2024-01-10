@@ -5,7 +5,7 @@ from modules.pandas import creating_dataframe
 from tools.git import git_commands
 from modules.general.basics import general_modules
 from modules.general.virtual_env import virtual_env_creation
-from modules.pandas.cheat_sheet import pandas_basics
+from modules.pandas.base import base
 
 # Page configuration
 st.set_page_config(
@@ -30,6 +30,6 @@ elif selected == 'Streamlit':
 elif selected == 'Git commands':
     git_commands()
 elif selected == 'Pandas':
-    pandas_basics()
+    base()
 elif selected == 'Common libraries':
     general_modules()
