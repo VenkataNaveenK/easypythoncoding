@@ -1,11 +1,11 @@
 import streamlit as st 
 from streamlit_option_menu import option_menu
-from utils.essentials import (virtual_env_creation, 
-                              create_streamlit_app,
-                              git_commands,
-                              pandas_basics,
-                              general_modules,
-                              )
+from modules.streamlit.creating_streamlit_app import create_streamlit_app
+from modules.pandas import creating_dataframe
+from tools.git import git_commands
+from modules.general.basics import general_modules
+from modules.general.virtual_env import virtual_env_creation
+from modules.pandas.cheat_sheet import pandas_basics
 
 # Page configuration
 st.set_page_config(
